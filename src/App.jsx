@@ -1,3 +1,7 @@
+// Izarra Villareal CS 81 JavaScript Module 9 Assignment 9B: Custom Profile Component
+
+// GitHub URL: https://github.com/izzyduzzzit/module9b-profile
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
