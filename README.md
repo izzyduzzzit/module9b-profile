@@ -11,9 +11,9 @@ This is a React app built with Vite. It contains a profile component styled with
 - How to use JSX
 - How to style with inline CSS
 - How to create and render functional components
+- How to use props and useState
 
 ## Challenges
-Briefly describe any issues you encountered and how you resolved them.
+The only issue I ran into with this assignment was with a typo when I was adding my second component rendered my app as a blank page. I quicklu figured it out though, I had just made an error when statically entering the user's vitals data.
 
 ## Screenshot
-Include a screenshot of your component.
