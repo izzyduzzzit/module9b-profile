@@ -2,38 +2,84 @@
 
 // GitHub URL: https://github.com/izzyduzzzit/module9b-profile
 
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Importing useState for "dark mode" theme color change function from react library
+// Also importing UserProfile components
+import { useState } from 'react';
+import UserProfile from './UserProfile';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // State to track if "dark mode" color change theme is on
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Staticly entered data for three people in parent component "App" to be used via props in other components
+  const person1Name = "Alice Glass";
+  const person1Bio = "Co-founder and former frontwoman of the electronic band Crystal Castles.";
+  const person1Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alice_Glass_09_14_2017_-23_%2837254316745%29.jpg/500px-Alice_Glass_09_14_2017_-23_%2837254316745%29.jpg";
+
+  const person2Name = "Hope Sandoval";
+  const person2Bio = "American singer, songwriter, and the lead singer of Mazzy Star and Hope Sandoval & the Warm Inventions.";
+  const person2Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Hope_Sandoval.jpg/500px-Hope_Sandoval.jpg";
+
+  const person3Name = "Björk Guðmundsdóttir";
+  const person3Bio = "Icelandic singer, songwriter, composer, record producer, and actress.";
+  const person3Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bjork_Orkestral_Paris_%28cropped%29.png/500px-Bjork_Orkestral_Paris_%28cropped%29.png";
+
+  // Function to toggle between green and purple themes a.k.a. "dark mode" toggle
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div style={{ 
+      // I had to get some help with the inline CSS as I am not an expert (vh is new to me)
+      minHeight: '100vh', 
+      backgroundColor: '#f5f5f5', 
+      paddingTop: '20px' 
+    }}>
+      {/* "Dark mode" theme toggle button for green or purple */}
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <button 
+          onClick={toggleTheme}
+          style={{
+            padding: '12px 24px',
+            fontSize: '16px',
+            borderRadius: '8px',
+            border: 'none',
+            backgroundColor: isDarkMode ? '#9c88ff' : '#88ff88',
+            color: 'white',
+            cursor: 'pointer',
+            fontWeight: 'bold'
+          }}
+        >
+          {isDarkMode ? 'Green' : 'Purple'}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      {/* User profile cards to render statically entered user info */}
+      <div style={{ /* Again, I had to get some online help with CSS; flex was new to me */
+        display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '20px', gap: '20px' }}>
+        <UserProfile 
+          /* Passing name, bio, image, & isDarkMode props to UserProfile component for each user */
+          name={person1Name}
+          bio={person1Bio}
+          image={person1Image}
+          isDarkMode={isDarkMode}
+        />
+        <UserProfile 
+          name={person2Name}
+          bio={person2Bio}
+          image={person2Image}
+          isDarkMode={isDarkMode}
+        />
+        <UserProfile 
+          name={person3Name}
+          bio={person3Bio}
+          image={person3Image}
+          isDarkMode={isDarkMode}
+        />
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
