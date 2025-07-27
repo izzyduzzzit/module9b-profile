@@ -6,6 +6,7 @@
 // Also importing UserProfile components
 import { useState } from 'react';
 import UserProfile from './UserProfile';
+import HealthVitals from './HealthVitals';
 
 function App() {
   // State to track if "dark mode" color change theme is on
@@ -15,14 +16,23 @@ function App() {
   const person1Name = "Alice Glass";
   const person1Bio = "Co-founder and former frontwoman of the electronic band Crystal Castles.";
   const person1Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Alice_Glass_09_14_2017_-23_%2837254316745%29.jpg/500px-Alice_Glass_09_14_2017_-23_%2837254316745%29.jpg";
+  const person1HeartRate = "72 bpm";
+  const person1BloodPressure = "120/80";
+  const person1Temperature = "98.6°F";
 
   const person2Name = "Hope Sandoval";
   const person2Bio = "American singer, songwriter, and the lead singer of Mazzy Star and Hope Sandoval & the Warm Inventions.";
   const person2Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Hope_Sandoval.jpg/500px-Hope_Sandoval.jpg";
+  const person2HeartRate = "68 bpm";
+  const person2BloodPressure = "115/75";
+  const person2Temperature = "98.4°F";
 
   const person3Name = "Björk Guðmundsdóttir";
   const person3Bio = "Icelandic singer, songwriter, composer, record producer, and actress.";
   const person3Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Bjork_Orkestral_Paris_%28cropped%29.png/500px-Bjork_Orkestral_Paris_%28cropped%29.png";
+  const person3HeartRate = "75 bpm";
+  const person3BloodPressure = "118/78";
+  const person3Temperature = "98.7°F";
 
   // Function to toggle between green and purple themes a.k.a. "dark mode" toggle
   const toggleTheme = () => {
@@ -75,6 +85,31 @@ function App() {
           name={person3Name}
           bio={person3Bio}
           image={person3Image}
+          isDarkMode={isDarkMode}
+        />
+      </div>
+
+      {/* Health Vitals Cards */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', padding: '20px', gap: '20px' }}>
+        <HealthVitals 
+          name={person1Name}
+          heartRate={person1HeartRate}
+          bloodPressure={person1BloodPressure}
+          temperature={person1Temperature}
+          isDarkMode={isDarkMode}
+        />
+        <HealthVitals 
+          name={person2Name}
+          heartRate={person2HeartRate}
+          bloodPressure={person2BloodPressure}
+          temperature={person2Temperature}
+          isDarkMode={isDarkMode}
+        />
+        <HealthVitals 
+          name={person3Name}
+          heartRate={person3HeartRate}
+          bloodPressure={person3BloodPressure}
+          temperature={person3Temperature}
           isDarkMode={isDarkMode}
         />
       </div>
